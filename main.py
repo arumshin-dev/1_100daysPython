@@ -1,43 +1,39 @@
-  tvShow = input("What is your favorite tv show? ")
-  if tvShow == "peppa pig":
-    print("Ugh, why?")
-    faveCharacter = input("Who is your favorite character? ")
-    if faveCharacter == "daddy pig":
-      print("Right answer")
-    else:
-      print("Nah, Daddy Pig's the greatest")
-  elif tvShow == "paw patrol":
-    print("Aww, sad times")
-  else:
-    print("Yeah, that's cool and all…")
+      name = input("Name: ")
+      if name == "Dave" or "dave":
+        print("Hi Dave")
 
-  order = input("What would you like to order: pizza or hamburger? ")
-  if order == "hamburger":
-    print("Thank you.")
-    cheese = input("Do you want cheese?")
-    if cheese == "yes":
-      print("You got it.")
-    else: 
-      print("No cheese it is.")
-  elif order == "pizza":
-    print("Pizza coming up.")
-    toppings = input("Do you want pepperoni on that?")
-    if toppings == "yes":
-      print("We will add pepperoni.")
-  else:
-    print("Your pizza will not have pepperoni.")
+      name = input("Name: ")
+      if name == "Dave" or name == "dave":
+        print("Hi Dave")
 
-  print ("Are you a superfan of 'The Big Bang Theory' or a fake fan?")
-  print()
-  print("Answer these questions to find out.")
 
-  Glasses = input("Does someone wear glasses?")
-  if Glasses == "yes":
-    print("Correct!")
-  else:
-    print("Wrong!")
-    WhoGlasses = input("And who wears glasses?")
-    if WhoGlasses == "Leonard":
-      print("You got it")
-    else:
-      print("Try again!")
+      print("Hello. Welcome to your daily affirmation generator.")
+      name = input("What is your name?")
+
+      if name =="Mark" or name == "mark":
+       DOW = input("What is the day of the week?")
+       if DOW == "monday" or DOW == "Monday":
+         print("It is going to be a great Monday", name)
+       if DOW == "tuesday" or DOW == "Tuesday":
+         print("What a wonderful Tuesday it is", name)
+       if DOW == "wednesday" or DOW == "Wednesday":
+         print("Happy Hump Day", name)
+       if DOW == "thursday" or DOW == "Thursday":
+         print(name,"your week is almost over!")
+       if DOW == "friday" or DOW == "Friday":
+         print(name, "It's FRIDAY!")
+
+      elif name == "David" or name== "david":
+       DOW = input("What is the day of the week?")
+       if DOW == "monday" or DOW == "Monday":
+         print("It is going to be a great Monday", name)
+       if DOW == "tuesday" or DOW == "Tuesday":
+         print("You look great in that color", name)
+       if DOW == "wednesday" or DOW == "Wednesday":
+         print("You look chipper today", name)
+       if DOW == "thursday" or DOW == "Thursday":
+         print(name,"you are doing a great job!")
+       if DOW == "friday" or DOW == "Friday":
+         print(name, "it's FRIDAY!")
+      else:
+       print("I do not know your name, but I hope you are having a great day!")
