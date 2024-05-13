@@ -1,20 +1,18 @@
-#"525,600 minutes"
+#Find All the Bugs!
+# Debug 🚫🪲 my code.
 
-days_this_year = int(input("How many days are in this year?"))
-
-days_in_year = 365
-days_in_leapyear = 366
-hours_in_day = 24
-minutes_in_hour = 60
-seconds_in_minute = 60
-
-
-result = days_in_year * hours_in_day * minutes_in_hour * seconds_in_minute
-
-leapyear_result = days_in_leapyear * hours_in_day * minutes_in_hour * seconds_in_minute
-
-
-if days_this_year == 366:
-  print("Number of seconds in a leap year are", leapyear_result)
+print("100 Days of Code QUIZ")
+print()
+print("How many can you answer correctly?")
+ans1 = input(("What language are we writing in?"))
+if ans1 == "python":
+  print("Correct")
 else:
-  print("Number of seconds in a year are", result)
+  print("Nope🙈")
+ans2 = int(input("Which lesson number is this?"))
+if(ans2>12):
+  print("We're not quite that far yet")
+elif(ans2==12):
+  print("That's right!")
+else:
+  print("We've gone well past that!")
