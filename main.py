@@ -58,7 +58,7 @@ total_pages = get_pages(site)#페이지 개수를 가져오는 함수를 호출
 print(f"🎈{site}:{total_pages}")
 #페이지 개수를 가져와 스크랩 함수에 개수를 넣어 반복 호출
 for x in range(total_pages):
-  url = f"{site}page/{x+1}"#페이지를 가져오는 url
+  url = f"{site}/page/{x+1}"#페이지를 가져오는 url
   print("💧", url)
   scrape_page(url,all_jobs)#페이지를 스크랩하는 함수를 호출
 
@@ -66,3 +66,28 @@ for x in range(total_pages):
 print("total",len(all_jobs))#모든 정보를 가져왔으므로 개수를 출력
 print(all_jobs)
 print("😃페이지 스크랩 끝😃")
+
+all_skill_href = []
+all_skill_jobs = []
+def get_skills(url):
+  #response = requests.get(url)#페이지 요청
+  response = requests.get(url, headers = {"User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/125.0.0.0 Safari/537.36"})
+  soup = BeautifulSoup(response.content, "html.parser",)#html 파싱
+  #return len(soup.find("div", class_= "popular_skills").find("li", class_= "link").find_all("a"))#페이지 개수를 리턴
+  skills = soup.find("div", class_= "popular_skills").find("ul", class_= "links").find_all("li")[0:]
+
+  for skill in skills:
+    link = skill.find("a")["href"]#링크
+    skillname = skill.find("a").text
+
+    all_skill_href.append(link)#리스트에 저장
+    print(link,skillname)
+    scrape_page(link,all_skill_jobs)
+
+print("✨skill link")
+get_skills(site)
+print(all_skill_href)
+#print(len(all_skill_href))
+print(all_skill_jobs)
+print(len(all_skill_jobs))
+
