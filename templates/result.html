@@ -7,11 +7,34 @@
 </head>
 <body>
     <h1>Search Results for "{{ skill }}" on "{{ website }}"</h1>
-    <ul>
-        {% for item in data %}
-            <li>{{ item }}</li>
-        {% endfor %}
-    </ul>
+    <table>
+        <thead>
+          <tr>
+            <th>title</th>
+            <th>company</th>
+            {% if data|selectattr('desc')|list %}
+                <th>desc</th>
+            {% endif %}
+            {% if data|selectattr('url')|list %}
+                <th>link</th>
+            {% endif %}
+          </tr>
+        </thead>
+        <tbody>
+            {% for job in data %}
+                <tr>
+                    <td>{{job.title}}</td>
+                    <td>{{job.company}}</td>
+                    {% if job.desc %}
+                        <td>{{ job.desc }}</td>
+                    {% endif %}
+                    {% if job.url %}
+                        <td><a href="{{ job.url }}" target="_blank">Apply &rarr;</a></td>
+                    {% endif %}
+                </tr>
+            {% endfor %}
+        </tbody>
+      </table>
     <a href="{{ url_for('search') }}">Back to Search</a>
 </body>
 </html>
