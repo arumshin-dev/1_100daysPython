@@ -1,32 +1,30 @@
-from flask import Flask, render_template, request
-import berlinstartupjobs
-import weworkremotely
-import web3
+print("Exam Grade Calculator")
+print()
+name_of_exam = input("Name of exam: ")
+print()
+total_score = int(input("Max. Possible Score:"))
+your_score = int(input("Your score: "))
+print()
 
-app = Flask("JobScrapper")
-siteaddress = ["https://berlinstartupjobs.com/skill-areas/","https://weworkremotely.com/remote-jobs/search?utf8=%E2%9C%93&term=","https://web3.career/"]
-site = ["berlinstartupjobs","weworkremotely","web3"]
 
-@app.route('/')
-def search():
-    return render_template('search.html')
 
-@app.route('/result', methods=['POST'])
-def result():
-    website = request.form['website']
-    websiteNm = site[int(website)-1]
-    skill = request.form['skill']
-    scraped_data = web_scraper(website, skill)
-    return render_template('result.html', website=websiteNm, skill=skill, data=scraped_data)
+number_score = float(your_score / total_score)
+final_number = round(number_score, 2)
+final_perc = round(float(your_score / total_score)*100, 2)
 
-def web_scraper(website, skill):
-    url = siteaddress[int(website)-1] + skill
-    data = []
-    if website == '1':
-      berlinstartupjobs.scrape_page(url, data)
-    elif website == '2':
-      weworkremotely.scrape_page(url, data)
-    else:
-      web3.get_pages(url, data)
-    return data
-app.run("0.0.0.0")
+print("You got",final_perc,"%")
+
+if final_number >= .90:
+  print("Your letter score is an A+")
+elif final_number >= .80 and final_number <= .89:
+  print("Your letter grade is an A-.")
+elif final_number >= .70 and final_number <= .79:
+  print("Your letter score is a B.")
+elif final_number >= .60 and final_number <= .69:
+  print("Your letter grade is a C.")
+elif final_number >= .50 and final_number <= .59:
+  print("Your letter grade is a D.")
+elif final_number <= .49:
+  print("Your letter grade is a U.")
+else: 
+  print("Try again!")
